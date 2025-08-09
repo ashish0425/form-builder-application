@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { store } from './store';
+import { theme } from './theme';
+import FormBuilder from './components/FormBuilder/FormBuilder';
+import FormPreview from './components/FormPreview/FormPreview';
+import MyForms from './components/MyForms/MyForms';
 
-function App() {
+const Navigation: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<AppBar position="static" className="navigation-bar">
+  <Toolbar>
+    <Typography variant="h6" className="navigation-title" sx={{ flexGrow: 1 }}>
+      Form Builder
+    </Typography>
+    <Box sx={{ display: 'flex', gap: 2 }}>
+      <Button className="navigation-button" color="inherit" href="/create">Create</Button>
+      <Button className="navigation-button" color="inherit" href="/preview">Preview</Button>
+      <Button className="navigation-button" color="inherit" href="/myforms">My Forms</Button>
+    </Box>
+  </Toolbar>
+</AppBar>
   );
-}
+};
+
+const App: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <CssBaseline />
+          <Router>
+            <Navigation />
+            <Routes>
+              <Route path="/" element={<Navigate to="/create" replace />} />
+              <Route path="/create" element={<FormBuilder />} />
+              <Route path="/preview" element={<FormPreview />} />
+              <Route path="/myforms" element={<MyForms />} />
+            </Routes>
+          </Router>
+        </LocalizationProvider>
+      </ThemeProvider>
+    </Provider>
+  );
+};
 
 export default App;
