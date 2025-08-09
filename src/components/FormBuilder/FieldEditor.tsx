@@ -1,13 +1,13 @@
 import DerivedFieldEditor from './DerivedFieldEditor';
 
-import { FormGroup, MenuItem, Select, InputLabel } from '@mui/material';
+// import { FormGroup, MenuItem, Select, InputLabel } from '@mui/material';
 
 import React from 'react';
 import { 
   Card, CardContent, TextField, FormControlLabel, Switch, 
-  IconButton, Box, Chip, Button, Typography 
+  IconButton, Box, Chip, 
 } from '@mui/material';
-import { Delete, ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import { Delete, ArrowUpward } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateField, deleteField, reorderFields } from '../../store/slices/formSlice';
 import { FormField } from '../../types/form';
@@ -39,11 +39,11 @@ const FieldEditor: React.FC<FieldEditorProps> = ({ field, index }) => {
     }
   };
 
-  const handleMoveDown = () => {
-    if (index < totalFields - 1) {
-      dispatch(reorderFields({ fromIndex: index, toIndex: index + 1 }));
-    }
-  };
+  // const handleMoveDown = () => {
+  //   if (index < totalFields - 1) {
+  //     dispatch(reorderFields({ fromIndex: index, toIndex: index + 1 }));
+  //   }
+  // };
 
   return (
     <Card className="form-field-card" sx={{ mb: 2 }}>
