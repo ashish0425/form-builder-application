@@ -31,8 +31,8 @@ const SaveFormDialog: React.FC<SaveFormDialogProps> = ({ open, onClose }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth className="glassmorphism-modal">
-      <DialogTitle sx={{ color: 'white' }}>Save Form</DialogTitle>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+      <DialogTitle>Save Form</DialogTitle>
       <DialogContent>
         <TextField
           fullWidth

@@ -23,7 +23,7 @@ const formulaOptions = [
 const DerivedFieldEditor: React.FC<DerivedFieldEditorProps> = ({ field, onUpdate }) => {
   const currentForm = useSelector((state: RootState) => state.form.currentForm);
   
-  
+  // Get available parent fields (exclude current field and other derived fields)
   const availableParentFields = currentForm?.fields.filter(f => 
     f.id !== field.id && !f.isDerived
   ) || [];
@@ -34,7 +34,7 @@ const DerivedFieldEditor: React.FC<DerivedFieldEditorProps> = ({ field, onUpdate
         isDerived: true, 
         parentFields: [], 
         formula: '',
-        required: false 
+        required: false // Derived fields shouldn't be required
       });
     } else {
       onUpdate({ 
@@ -52,7 +52,7 @@ const DerivedFieldEditor: React.FC<DerivedFieldEditorProps> = ({ field, onUpdate
   const handleFormulaChange = (formula: string) => {
     onUpdate({ formula });
     
-    
+    // Auto-select appropriate parent fields based on formula
     const selectedFormula = formulaOptions.find(f => f.value === formula);
     if (selectedFormula && availableParentFields.length >= selectedFormula.requiredParents) {
       const autoParents = availableParentFields

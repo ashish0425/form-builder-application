@@ -9,8 +9,8 @@ const FormPreview: React.FC = () => {
 
   if (!currentForm) {
     return (
-      <Container maxWidth="md" className="page-container" sx={{ py: 4 }}>
-        <Alert severity="info" >
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Alert severity="info">
           No form selected. Please create a form first or select one from My Forms.
         </Alert>
       </Container>
@@ -18,12 +18,12 @@ const FormPreview: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="md" className="page-container" sx={{ py: 4 }}>
+    <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" gutterBottom>
         Preview: {currentForm.name || 'Untitled Form'}
       </Typography>
       
-      <Box className="form-preview-container" sx={{ mt: 3 }}>
+      <Box sx={{ mt: 3 }}>
         <DynamicForm form={currentForm} />
       </Box>
     </Container>

@@ -1,4 +1,4 @@
-import { FormField} from '../types/form';
+import { FormField, ValidationRule } from '../types/form';
 
 export const validateField = (field: FormField, value: any): string => {
   if (!field.validations || field.validations.length === 0) {
@@ -74,5 +74,3 @@ export const validateForm = (fields: FormField[], formData: Record<string, any>)
 
   return errors;
 };
-
-

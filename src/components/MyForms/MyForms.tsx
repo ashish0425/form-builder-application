@@ -25,7 +25,7 @@ const MyForms: React.FC = () => {
 
   if (savedForms.length === 0) {
     return (
-      <Container maxWidth="lg" className="page-container" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
         <Typography variant="h4" gutterBottom>My Forms</Typography>
         <Alert severity="info">
           No forms saved yet. <Button onClick={() => navigate('/create')}>Create your first form</Button>
@@ -41,7 +41,7 @@ const MyForms: React.FC = () => {
       <Grid container spacing={3}>
         {savedForms.map((form) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={form.id}>
-            <Card className="my-forms-card">
+            <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
                   {form.name}
@@ -70,4 +70,3 @@ const MyForms: React.FC = () => {
 };
 
 export default MyForms;
-

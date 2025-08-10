@@ -13,18 +13,18 @@ import MyForms from './components/MyForms/MyForms';
 
 const Navigation: React.FC = () => {
   return (
-<AppBar position="static" className="navigation-bar">
-  <Toolbar>
-    <Typography variant="h6" className="navigation-title" sx={{ flexGrow: 1 }}>
-      Form Builder
-    </Typography>
-    <Box sx={{ display: 'flex', gap: 2 }}>
-      <Button className="navigation-button" color="inherit" href="/create">Create</Button>
-      <Button className="navigation-button" color="inherit" href="/preview">Preview</Button>
-      <Button className="navigation-button" color="inherit" href="/myforms">My Forms</Button>
-    </Box>
-  </Toolbar>
-</AppBar>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Form Builder
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button color="inherit" href="/create">Create</Button>
+          <Button color="inherit" href="/preview">Preview</Button>
+          <Button color="inherit" href="/myforms">My Forms</Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

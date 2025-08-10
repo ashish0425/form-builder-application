@@ -1,13 +1,11 @@
 import DerivedFieldEditor from './DerivedFieldEditor';
-
-// import { FormGroup, MenuItem, Select, InputLabel } from '@mui/material';
-
+import { FormGroup, MenuItem, Select, InputLabel } from '@mui/material';
 import React from 'react';
 import { 
   Card, CardContent, TextField, FormControlLabel, Switch, 
-  IconButton, Box, Chip, 
+  IconButton, Box, Chip, Button, Typography 
 } from '@mui/material';
-import { Delete, ArrowUpward } from '@mui/icons-material';
+import { Delete, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateField, deleteField, reorderFields } from '../../store/slices/formSlice';
 import { FormField } from '../../types/form';
@@ -39,23 +37,18 @@ const FieldEditor: React.FC<FieldEditorProps> = ({ field, index }) => {
     }
   };
 
-  // const handleMoveDown = () => {
-  //   if (index < totalFields - 1) {
-  //     dispatch(reorderFields({ fromIndex: index, toIndex: index + 1 }));
-  //   }
-  // };
+  const handleMoveDown = () => {
+    if (index < totalFields - 1) {
+      dispatch(reorderFields({ fromIndex: index, toIndex: index + 1 }));
+    }
+  };
 
   return (
-    <Card className="form-field-card" sx={{ mb: 2 }}>
+    <Card sx={{ mb: 2 }}>
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
           <Box sx={{ flex: 1 }}>
-            <Chip 
-  label={field.type.toUpperCase()} 
-  size="small" 
-  className="field-type-chip"
-  sx={{ mb: 1 }} 
-/>
+            <Chip label={field.type.toUpperCase()} size="small" sx={{ mb: 1 }} />
             <TextField
               fullWidth
               label="Field Label"
@@ -66,23 +59,15 @@ const FieldEditor: React.FC<FieldEditorProps> = ({ field, index }) => {
           </Box>
           
           <Box sx={{ ml: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <IconButton 
-  onClick={handleMoveUp} 
-  disabled={index === 0} 
-  size="small"
-  className="action-button reorder-button"
->
-  <ArrowUpward />
-</IconButton>
-
-<IconButton 
-  onClick={handleDelete} 
-  color="error" 
-  size="small"
-  className="action-button delete-button"
->
-  <Delete />
-</IconButton>
+            <IconButton onClick={handleMoveUp} disabled={index === 0} size="small">
+              <ArrowUpward />
+            </IconButton>
+            <IconButton onClick={handleMoveDown} disabled={index === totalFields - 1} size="small">
+              <ArrowDownward />
+            </IconButton>
+            <IconButton onClick={handleDelete} color="error" size="small">
+              <Delete />
+            </IconButton>
           </Box>
         </Box>
 

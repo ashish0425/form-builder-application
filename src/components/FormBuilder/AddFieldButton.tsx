@@ -44,7 +44,7 @@ const AddFieldButton: React.FC = () => {
 
   return (
     <>
-      <Button variant="outlined"   sx={{color:'#fff'}}startIcon={<Add />} onClick={handleClick}>
+      <Button variant="outlined" startIcon={<Add />} onClick={handleClick}>
         Add Field
       </Button>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

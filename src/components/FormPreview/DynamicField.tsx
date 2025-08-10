@@ -81,14 +81,12 @@ const DynamicField: React.FC<DynamicFieldProps> = ({
     }
   }
 }, [field, allData, onChange]);
-
   const renderField = () => {
     switch (field.type) {
       case 'text':
       case 'number':
         return (
           <TextField
-            className="modern-textfield"
             fullWidth
             label={field.label}
             type={field.type}
@@ -106,7 +104,6 @@ const DynamicField: React.FC<DynamicFieldProps> = ({
       case 'textarea':
         return (
           <TextField
-            className="modern-textfield"
             fullWidth
             label={field.label}
             multiline
@@ -226,23 +223,26 @@ const DynamicField: React.FC<DynamicFieldProps> = ({
   return (
     <Box sx={{ position: 'relative' }}>
       {field.isDerived && (
-  <Box 
-    className="derived-field-badge"
-    sx={{ 
-      position: 'absolute', 
-      top: -8, 
-      right: 8, 
-      zIndex: 1
-    }}
-  >
-    Derived
-  </Box>
-)}
+        <Box 
+          sx={{ 
+            position: 'absolute', 
+            top: -8, 
+            right: 8, 
+            bgcolor: 'primary.main', 
+            color: 'white', 
+            px: 1, 
+            py: 0.5, 
+            borderRadius: 1, 
+            fontSize: '0.75rem',
+            zIndex: 1
+          }}
+        >
+          Derived
+        </Box>
+      )}
       {renderField()}
     </Box>
   );
 };
 
 export default DynamicField;
-
-

@@ -19,7 +19,7 @@ const FormBuilder: React.FC = () => {
   }, [dispatch, currentForm]);
 
   return (
-    <Container maxWidth="lg" className="page-container" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h4" gutterBottom>Form Builder</Typography>
       
       <Box sx={{ mb: 3 }}>
@@ -31,7 +31,6 @@ const FormBuilder: React.FC = () => {
       <Box sx={{ mt: 4 }}>
         <Button 
           variant="contained" 
-          className="modern-button"
           onClick={() => setSaveDialogOpen(true)}
           disabled={!currentForm?.fields.length}
         >
